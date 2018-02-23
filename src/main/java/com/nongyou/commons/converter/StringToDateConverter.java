@@ -17,15 +17,7 @@ public class StringToDateConverter implements Converter<String, Date> {
 			return null;
 		}
 
-		String[] dateEles = source.split("[^0-9]");
-		List<String> dateElesList = new ArrayList<>();
-		for (String ele : dateEles) {
-			if (StringUtils.hasText(ele)) {
-				dateElesList.add(ele);
-			}
-		}
-		
-		dateEles = dateElesList.toArray(dateEles);
+		String[] dateEles = source.split("[^0-9]+");
 		for (int i = 0; i < dateEles.length; i++) {
 			if (i == 0) {
 				dateStr.replace(0, 4, String.format("%04d", Integer.valueOf(dateEles[0])));
